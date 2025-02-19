@@ -1,0 +1,212 @@
+<div class="vehicle-registration-tool">
+    <h2>Consulta De Matricula 2025 – SRI – ANT ECUADOR</h2>
+    <div class="search-container">
+        <input type="text" id="plateInput" placeholder="Ingrese Placa, RAMV o CPN">
+        <button>
+            <span class="icon">🔍</span> Buscar
+        </button>
+    </div>
+    <div id="result"></div>
+</div>
+
+<style>
+    /* General Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .vehicle-registration-tool {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .vehicle-registration-tool h2 {
+        text-align: center;
+        color: #333;
+        font-size: 1.8em;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .search-container input[type="text"] {
+        width: 100%; /* Full width on mobile */
+        padding: 12px;
+        border: 2px solid #0073aa;
+        border-radius: 8px;
+        font-size: 1em;
+        outline: none;
+        background: #ffffff;
+        color: #333;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-container input[type="text"]:focus {
+        border-color: #005177;
+    }
+
+    .search-container button {
+        width: 100%; /* Full width on mobile */
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        background: #0073aa;
+        color: white;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center button text */
+        gap: 8px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-container button:hover {
+        background-color: #005177;
+        transform: translateY(-2px);
+    }
+
+    .search-container .icon {
+        font-size: 1.2em;
+    }
+
+    #result {
+        margin-top: 30px;
+    }
+
+    /* Vehicle Info Table */
+    .vehicle-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 25px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    }
+
+    .vehicle-table th,
+    .vehicle-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .vehicle-table th {
+        background-color: #0073aa;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    .vehicle-table tr:hover {
+        background-color: #0a4b8d;
+        color: white;
+    }
+
+    .vehicle-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Payment Details Card */
+    .payment-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .payment-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .payment-card h3 {
+        color: #0073aa;
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        font-weight: 600;
+        align-content: center;
+    }
+
+    .payment-card .payment-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .payment-card .payment-list li {
+        background: #a20303; /* Red background */
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1em;
+        color: white; /* White text */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .payment-card .payment-list li:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(255, 68, 68, 0.3); /* Red shadow */
+    }
+
+    .payment-card .payment-list li:last-child {
+        margin-bottom: 0;
+    }
+
+    .payment-card .payment-list li strong {
+        color: white; /* White text for strong elements */
+    }
+
+    /* Error Card */
+    .error-card {
+        background: #fff3f3;
+        border: 1px solid #ff4444;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(255, 68, 68, 0.1);
+    }
+
+    .error-card h3 {
+        color: #ff4444;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .error-card p {
+        color: #333;
+        font-size: 1.1em;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 600px) {
+        .search-container input[type="text"] {
+            width: calc(70% - 15px); /* Adjust width for larger screens */
+        }
+
+        .search-container button {
+            width: auto; /* Auto width for larger screens */
+        }
+    }
+</style>
